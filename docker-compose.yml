@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: car-rentar-api
+    ports:
+      - "8001:8001"
+    volumes:
+      - .:/app
+    environment:
+      - ENVIRONMENT=development
+      - DATA_DIR=/app/data
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8001 --reload
